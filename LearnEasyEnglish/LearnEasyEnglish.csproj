@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Images\key_logo.png" />
+    <None Remove="Assets\Images\Login_logo.jpg" />
+    <None Remove="Assets\Images\Login_png-1.jpg" />
+    <None Remove="Assets\Images\user_logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Assets\Icons\" />
+    <Folder Include="Assets\Logos\" />
+    <Folder Include="Assets\Sounds\" />
+    <Folder Include="Components\" />
+    <Folder Include="Enums\" />
+    <Folder Include="Security\" />
+    <Folder Include="Themes\" />
+    <Folder Include="Pages\" />
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FontAwesome.Sharp" Version="6.3.0" />
+    <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
+    <PackageReference Include="Npgsql" Version="7.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Images\key_logo.png" />
+    <Resource Include="Assets\Images\Login_logo.jpg" />
+    <Resource Include="Assets\Images\Login_png-1.jpg" />
+    <Resource Include="Assets\Images\user_logo.png">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+</Project>
