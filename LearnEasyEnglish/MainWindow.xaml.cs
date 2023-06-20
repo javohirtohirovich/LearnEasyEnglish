@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Runtime.InteropServices; // Windowni tepaga yoki yonga suraganda windowni bir bo'lagini egalash uchun pakcge
 using System.Windows.Interop; // Windowni tepaga yoki yonga suraganda windowni bir bo'lagini egalash uchun packge
+using LearnEasyEnglish.Pages;
+using LearnEasyEnglish.Utils;
 
 namespace LearnEasyEnglish
 {
@@ -40,6 +42,59 @@ namespace LearnEasyEnglish
         private void pnlContralBar_MouseEnter(object sender, MouseEventArgs e)
         {
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            //Dasturni butunlay yopadi
+            Application.Current.Shutdown();
+        }
+
+        private void btnMaximize_Click(object sender, RoutedEventArgs e)
+        {
+            //Agar window Default holatida turgan bo'lsa Maxmized qiladi
+            if (this.WindowState == WindowState.Normal)
+            {
+                this.WindowState=WindowState.Maximized;
+            }
+            //Agar windwo Maxmized holatida turgan bo'lsa default holatiga qaytaradi
+            else this.WindowState = WindowState.Normal; 
+        }
+
+        private void btnMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            //Windowni Minimized qiladi
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void rbDashboard_Click(object sender, RoutedEventArgs e)
+        {
+
+            
+        }
+
+        private void rbAddWordsGroup_Click(object sender, RoutedEventArgs e)
+        {
+           AddGroupWordsPage addGroupWordsPage = new AddGroupWordsPage();
+           PageNavigator.Content= addGroupWordsPage;
+        }
+
+        private void rbTranslate_Click(object sender, RoutedEventArgs e)
+        {
+            Translate translate=new Translate();
+            PageNavigator.Content = translate;
+        }
+
+        private void rbMemorizeWords_Click(object sender, RoutedEventArgs e)
+        {
+            MemorizeWordsPage memorizeWordsPage = new MemorizeWordsPage();
+            PageNavigator.Content = memorizeWordsPage;
+        }
+
+        private void rbInfo_Click(object sender, RoutedEventArgs e)
+        {
+            InfoPage infoPage= new InfoPage();
+            PageNavigator.Content = infoPage;
         }
     }
 }

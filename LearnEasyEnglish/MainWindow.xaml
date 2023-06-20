@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:LearnEasyEnglish"
         xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1300"
+        Title="MainWindow" 
+        Height="700" Width="1300"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Background="Transparent"
@@ -14,6 +15,7 @@
     <Border CornerRadius="10"                    
             BorderThickness="2"
             >
+        <!--Border chetki chiziqlariga rang berish uchun-->
         <Border.BorderBrush>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                 <GradientStop Color="{StaticResource winBorderColor1}" Offset="0"/>
@@ -21,17 +23,24 @@
                 <GradientStop Color="{StaticResource winBorderColor3}" Offset="1"/>
             </LinearGradientBrush>
         </Border.BorderBrush>
+        
+        <!--Asosiy Borderni ikki qismga bo'lib olish uchun-->
         <Grid>
+            <!--Borderni Ustunlari bo'yicha bo'lamiz-->
             <Grid.ColumnDefinitions>
-                <!--Navigation menu-->
+                <!--Menu Buttonlar uchun ajratilgan qism-->
                 <ColumnDefinition Width="250"/>
-                <!--Content section-->
+                <!--Menu Buttonlar bosilganida ochiladigan tarafi-->
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             
             <!--Navigation Menu-->
+            
+            <!--Menu bar joylashgan Borderni burchaklari uchun chap tomondagi tepa va past burchaklar-->
+            <!--Grid Column 0 yani birinchi ustun bo'yicha bo'lgan bo'lagimiz-->
             <Border CornerRadius="10,0,0,10"
                     Grid.Column="0">
+                <!--Menu Barga rang bersh uchun-->
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.7">
                         <GradientStop Color="{StaticResource secondaryBackColor1}" Offset="0"/>
@@ -39,69 +48,95 @@
                         
                     </LinearGradientBrush>
                 </Border.Background>
+
+                <!--Menu barda elementlar birin ketin joylashishi uchun StackPanel ochaman-->
                 <StackPanel>
-                    <!--Logo-->
+                    <!--Dastur Logosi va Nomini Joylashtirsh uchun Panel ichida yana bir panel ochib olaman-->
                     <StackPanel Orientation="Horizontal"
-                                Height="35"
-                                Margin="15,25,0,40">
+                                Height="45"
+                                Margin="15,25,5,40">
+                        <!--Image Source yordamida logoni chaqqirib oldim-->
                         <Image Source="/Assets/Images/Login_logo.jpg" Height="30"/>
+                        
+                        <!--Logo yonidagi datur nomi uchun-->
                         <TextBlock Text="EasyEnglish"
                                    Foreground="{StaticResource titleColor2}"
                                    FontSize="20"
-                                   FontFamily="Montserrat"
+                                   FontFamily="Jetbrains Mono"
                                    FontWeight="Medium"
                                    VerticalAlignment="Center"
                                    Margin="10,0,0,0"/>
 
                     </StackPanel>
-                    <!--Menu Button-->
                     
-                    <RadioButton Style="{StaticResource menuButton}"
-                                 Tag="{StaticResource color1}">
+                    <!--Menu Button-->
+
+                    <!--Dashboard Uchun RadioButton-->
+                    <!--Radio Buttonlar Styleni yaratgan Stylemiz orqali beramiz. Styleni menuButton Key bilin chaqirib olamiz-->
+                    <RadioButton x:Name="rbDashboard"
+                                 Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color1}"
+                                 Click="rbDashboard_Click">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="Home" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Dashboard" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
-
-                    <RadioButton Style="{StaticResource menuButton}"
-                                 Tag="{StaticResource color9}">
+                    
+                    <!--Words Groups Qo'shish uchun RadioButton-->
+                    <RadioButton x:Name="rbAddWordsGroup"
+                                 Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color9}"
+                                 Click="rbAddWordsGroup_Click">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="LayerGroup" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Add Words Group" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
-
-                    <RadioButton Style="{StaticResource menuButton}"
-                                 Tag="{StaticResource color7}">
+                    
+                    <!--Translate RadioButtonni-->
+                    <RadioButton x:Name="rbTranslate"
+                                 Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color7}"
+                                 Click="rbTranslate_Click">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="Language" Style="{StaticResource menuButtonIcon}"/>
-                            <TextBlock Text="Dashboard" Style="{StaticResource menuButtonText}"/>
+                            <TextBlock Text="Translate" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
-
-                    <RadioButton Style="{StaticResource menuButton}"
-                                 Tag="{StaticResource color6}">
+                    
+                    <!--Memorize words RadioButtoni-->
+                    <RadioButton x:Name="rbMemorizeWords"
+                                 Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color6}"
+                                 Click="rbMemorizeWords_Click">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="BookOpenReader" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Memorize words" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
-
-                    <RadioButton Style="{StaticResource menuButton}"
-                                 Tag="{StaticResource color3}">
+                    
+                    <!--Info RadioButtonni uchun-->
+                    <RadioButton x:Name="rbInfo"
+                                 Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color3}"
+                                 Click="rbInfo_Click">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="Info" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Info" Style="{StaticResource menuButtonText}"/>
                         </StackPanel>
                     </RadioButton>
 
+                <!--Birinchi Coloumn yani Menu bar ishi tugadi-->
                 </StackPanel>
                 
             </Border>
-            <!--Main-->
+            <!--Main Ya'ni Buttonlar bosilganda ochiladigan qisim Column 1-->
+            <!--Endi Bunda chap tarafdagi chetlarini burchaklarini qisqartiramiz-->
             <Border CornerRadius="0,10,10,0"
                     Grid.Column="1">
+                
+                <!--Main columnga rang beramiz-->
                 <Border.Background>
                     <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
                         <GradientStop Color="{StaticResource primaryBackColor1}" Offset="0"/>
@@ -109,11 +144,12 @@
 
                     </LinearGradientBrush>
                 </Border.Background>
-
+                
+                <!--Main Columnni Grid yordamida Bo'lib olamiz 3 ta  Rowga-->
                 <Grid>
 
                     <Grid.RowDefinitions>
-                        <!--Control bar-->
+                        <!--Control bar (Close,Minmesize,Maxmisize)-->
                         <RowDefinition Height="25"/>
                         <!--Header / Caption-->
                         <RowDefinition Height="35"/>
@@ -122,6 +158,8 @@
                     </Grid.RowDefinitions>
                     
                     <!--Control bar-->
+                    <!--Control barni Joylashtirish uchun StackPanel-->
+                    <!--StackPanel Row 0 da joylashadi yani end tepada-->
                     <StackPanel x:Name="pnlControlBar"
                                 Grid.Row="0"
                                 Orientation="Horizontal"
@@ -131,7 +169,40 @@
                                 MouseLeftButtonDown="pnlContralBar_MouseLeftButtonDown"
                                 MouseEnter="pnlContralBar_MouseEnter">
                         
+                        <!--Close Buttoni uchun Stylega oldin yaratib olgan stylemizdan foydalanamiz-->
+                        <Button x:Name="btnClose"
+                                Style="{StaticResource ControlButton}"
+                                Tag="{StaticResource color4}"
+                                Click="btnClose_Click">
+                            <fa:IconImage Icon="Xmark" Style="{StaticResource controlButtonIcon}"/>
+                        </Button>
+
+
+                        <!--Maxmisize Buttoni uchun Stylega oldin yaratib olgan stylemizdan foydalanamiz-->
+                        <Button x:Name="btnMaximize"
+                                Style="{StaticResource ControlButton}"
+                                Tag="{StaticResource color6}"
+                                Click="btnMaximize_Click">
+                            <fa:IconImage Icon="Square" Style="{StaticResource controlButtonIcon}"/>
+                        </Button>
+
+
+                        <!--Minimize Buttoni uchun Stylega oldin yaratib olgan stylemizdan foydalanamiz-->
+                        <Button x:Name="btnMinimize"
+                                Style="{StaticResource ControlButton}"
+                                Tag="{StaticResource color8}"
+                                Click="btnMinimize_Click">
+                            <fa:IconImage Icon="WindowMinimize" Width="12" Style="{StaticResource controlButtonIcon}"/>
+                        </Button>
+                    <!--Row 0 tugadi-->    
                     </StackPanel>
+                    <Border
+                        Grid.Row="2"
+                        CornerRadius="0,0,10,0">
+                        <Frame x:Name="PageNavigator"
+                       NavigationUIVisibility="Hidden"/>
+                    </Border>
+                    
                 </Grid>
 
             </Border>
