@@ -9,7 +9,9 @@ namespace LearnEasyEnglish.Entities_Models.Words;
 public sealed class Word : Auditable
 {
     public string Word_text { get; set; } = String.Empty;
-    public bool Is_Have_Defenation { get;set; }
     public string Sound_path { get; set; }=String.Empty;
-    public string Image_path { get; set; }= String.Empty;
+    public string DifinationText { get; set; }= String.Empty;
+    public string GroupName { get; set; }=String.Empty;
+    public string TranslatedText { get; set; }= String.Empty;
+    public object meanings { get; internal set; }
 }

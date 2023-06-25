@@ -14,6 +14,8 @@ public interface IRepository<T>
     public Task<int> UpdateAsync(long id,T editedObj);
     public Task<int> DeleteAsync(long id);
     public Task<IList<T>> GetAllAsync(PagenationParams @params);
+    public Task<IList<T>> GetAllAsync();
+    public Task<IList<T>> GetAlluserPasswordHashSaltAsync(string name);
     public Task<T> GetAsync(long id);
 
 }

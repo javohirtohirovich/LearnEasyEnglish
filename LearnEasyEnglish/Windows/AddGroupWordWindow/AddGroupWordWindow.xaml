@@ -1,0 +1,158 @@
+﻿<Window x:Class="LearnEasyEnglish.Windows.AddGroupWordWindow.AddGroupWordWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LearnEasyEnglish.Windows.AddGroupWordWindow"
+        mc:Ignorable="d"
+        Title="CreateGroup Word Window" 
+        Height="600" Width="550"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent">
+    <Border>
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.7">
+                <GradientStop Color="{StaticResource secondaryBackColor1}" Offset="0"/>
+                <GradientStop Color="{StaticResource secondaryBackColor2}" Offset="1"/>
+
+            </LinearGradientBrush>
+        </Border.Background>
+        
+        <StackPanel>
+            <TextBlock     x:Name="lbId"
+                           Text=""
+                           FontSize="1"
+                           Foreground="{StaticResource color5}"
+                           FontWeight="SemiBold"
+                           Margin="10"
+                           VerticalAlignment="Center"
+                           >
+
+            </TextBlock>
+            <Border HorizontalAlignment="Center">
+                <TextBlock Text="Create Group Word"
+                           FontSize="30"
+                           Foreground="{StaticResource color9}"
+                           FontWeight="SemiBold"
+                           Margin="5"
+                           VerticalAlignment="Center"
+                           >
+
+                </TextBlock>
+                
+               
+                           
+            </Border>
+            <Grid Height="200">
+                <Grid.ColumnDefinitions>
+                   
+                    <ColumnDefinition Width="350"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Label FontSize="25"
+                   Content="Word Group Name:"
+                   Foreground="{StaticResource color9}"
+                   Margin="25,10,0,0"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Grid.Column="0"
+                   >
+                
+                   </Label>
+            
+                <TextBox x:Name="tbGroupName"
+                         Grid.Column="0"
+                         Height="40"
+                         Width="300"
+                         Margin="30,55,0,0"
+                         MaxLength="50"
+                         FontSize="20"
+                         Background="#728BA1"
+                         Foreground="Black"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Top">
+                    
+                </TextBox>
+                <Label FontSize="25"
+                   Content="Image:"
+                   Foreground="{StaticResource color9}"
+                   Margin="25,10,25,0"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   Grid.Column="1"
+                   >
+
+                </Label>
+                <Button x:Name="btnImageSelector" 
+                                VerticalAlignment="Bottom"
+                                Content="..."
+                                FontSize="20"
+                                Click="btnImageSelector_Click"
+                                Height="30" Width="90"
+                                Margin="10 0 10 5"
+                                Grid.Column="1"/>
+                <Border Background="#728BA1"
+                        Grid.Column="1"
+                        Width="150"
+                        Height="100"
+                        VerticalAlignment="Center"
+                        Margin="0,50,0,39"
+                        Tag="">
+                    <Border x:Name="ImgCourseImage"
+                                Height="100" Width="150"
+                                CornerRadius="10"
+                                >
+                        <Border.Background>
+                            <ImageBrush x:Name="ImgBImage" />
+                        </Border.Background>
+                    </Border>
+
+                </Border>
+            </Grid>
+
+            <Label FontSize="25"
+                   Content="Description:"
+                   Foreground="{StaticResource color9}"
+                   Margin="25,5,0,0"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   >
+
+            </Label>
+            <TextBox x:Name="tbDescription"
+                     Height="150"
+                     Width="500"
+                     Margin="10,0,0,0"
+                     FontSize="20"
+                     Background="#728BA1"
+                     Foreground="Black"
+                     VerticalAlignment="Center"
+                     AcceptsReturn="True"
+                     TextWrapping="Wrap">
+
+            </TextBox>
+
+            <Border Width="200"
+                    Height="50"
+                    Margin="15"
+                    CornerRadius="10,10,10,10">
+                <Button x:Name="btSave"
+                        Margin="0,0,0,0"
+                        Width="200"
+                        Height="50"
+                        Content="Save"
+                        FontSize="30"
+                        VerticalAlignment="Center"
+                        FontStretch="Normal"
+                        FontWeight="SemiBold"
+                        Style="{DynamicResource RoundButton}"
+                        Background="#3E6D9B"
+                        Click="btSave_Click">
+                    
+                    
+                </Button>
+            </Border>
+        </StackPanel>
+    </Border>
+</Window>

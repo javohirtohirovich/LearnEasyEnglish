@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="LearnEasyEnglish.Components.WordsGroup.Words_Group"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LearnEasyEnglish.Components.WordsGroup"
+             mc:Ignorable="d" 
+             Height="260" Width="280"
+             Margin="10 10"
+             MouseDown="UserControl_MouseDown">
+    <Grid x:Name="grMain" Cursor="Hand" MouseDown="grMain_MouseDown">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="160"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" CornerRadius="10 10 0 0">
+            <Border.Background>
+                <ImageBrush x:Name="ImgB" Stretch="UniformToFill"/>
+            </Border.Background>
+        </Border>
+        <Border Grid.Row="1" 
+                Background="{StaticResource panelActiveColor}"
+                CornerRadius="0 0 10 10">
+            <StackPanel Margin="10 5">
+                <Label x:Name="lbName"
+                       FontSize="16"
+                       FontFamily="Jetbrains Mono"
+                       FontWeight="SemiBold"
+                       Foreground="Black"/>
+
+                <TextBlock x:Name="tbDescription"
+                           FontFamily="Jetbrains Mono"
+                           FontSize="14"
+                           Height="60"
+                           TextWrapping="Wrap"
+                           Foreground="Black">
+                    
+                </TextBlock>
+                <Button x:Name="btAddWord"
+                        HorizontalAlignment="Right"
+                        Width="20"
+                        Height="20"
+                        Content="+"
+                        Click="btAddWord_Click"
+                        Margin="0,-20,-5,0">
+                    
+                </Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

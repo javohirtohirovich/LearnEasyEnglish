@@ -7,11 +7,12 @@
         xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         mc:Ignorable="d"
         Title="MainWindow" 
-        Height="700" Width="1300"
+        Height="700" Width="1250"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Background="Transparent"
-        AllowsTransparency="True">
+        AllowsTransparency="True"
+        Loaded="Window_Loaded">
     <Border CornerRadius="10"                    
             BorderThickness="2"
             >
@@ -38,7 +39,7 @@
             
             <!--Menu bar joylashgan Borderni burchaklari uchun chap tomondagi tepa va past burchaklar-->
             <!--Grid Column 0 yani birinchi ustun bo'yicha bo'lgan bo'lagimiz-->
-            <Border CornerRadius="10,0,0,10"
+            <Border CornerRadius="10,10,10,10"
                     Grid.Column="0">
                 <!--Menu Barga rang bersh uchun-->
                 <Border.Background>
@@ -87,7 +88,7 @@
                     <RadioButton x:Name="rbAddWordsGroup"
                                  Style="{StaticResource menuButton}"
                                  Tag="{StaticResource color9}"
-                                 Click="rbAddWordsGroup_Click">
+                                 Click="rbAddWordsGroup_Click" Checked="rbAddWordsGroup_Checked">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="LayerGroup" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Add Words Group" Style="{StaticResource menuButtonText}"/>
@@ -196,6 +197,71 @@
                         </Button>
                     <!--Row 0 tugadi-->    
                     </StackPanel>
+                    <!--Header / Caption-->
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                         
+                        <!--Caption-->
+                        <StackPanel Grid.Column="0"
+                                    Orientation="Horizontal"
+                                    VerticalAlignment="Center">
+                            <fa:IconImage Icon="Home"
+                                          Height="20"
+                                          Width="20"
+                                          Foreground="{StaticResource titleColor2}"
+                                          Margin="35,0,10,0"/>
+                            <TextBlock Text="EasyEnglish"
+                                       Foreground="{StaticResource titleColor2}"
+                                       FontSize="16"
+                                       FontFamily="Jetbrains Mono"
+                                       FontWeight="Medium"
+                                       VerticalAlignment="Center"/>
+
+                        </StackPanel>
+                        
+                        <!--User options-->
+                        <StackPanel Grid.Column="1"
+                                    Orientation="Horizontal"
+                                    FlowDirection="RightToLeft"
+                                    VerticalAlignment="Center"
+                                    Margin="0,0,10,0">
+                            
+                            <Button Style="{StaticResource iconButton}"
+                                    Tag="{StaticResource color1}">
+                                <fa:IconImage Icon="AngleDown"
+                                              Height="12"
+                                              Width="12"
+                                              Style="{StaticResource iconButtonIcon}"/>
+
+                            </Button>
+                            <TextBlock x:Name="tbId"                                       
+                                       Foreground="{StaticResource titleColor3}"
+                                       FontFamily="Montserrat"
+                                       FontSize="12"
+                                       VerticalAlignment="Center"/>
+                            <TextBlock Text=":ID  "                           
+                                       Foreground="{StaticResource titleColor3}"
+                                       FontFamily="Montserrat"
+                                       FontSize="12"
+                                       VerticalAlignment="Center"
+                                       Margin="10"/>
+                            <TextBlock x:Name="tblUser"                                       
+                                       Foreground="{StaticResource titleColor3}"
+                                       FontFamily="Montserrat"
+                                       FontSize="12"
+                                       VerticalAlignment="Center"/>
+                            <TextBlock Text=":Name  "                           
+                                       Foreground="{StaticResource titleColor3}"
+                                       FontFamily="Montserrat"
+                                       FontSize="12"
+                                       VerticalAlignment="Center"
+                                       Margin="10"/>
+
+                        </StackPanel>
+                    </Grid>
                     <Border
                         Grid.Row="2"
                         CornerRadius="0,0,10,0">

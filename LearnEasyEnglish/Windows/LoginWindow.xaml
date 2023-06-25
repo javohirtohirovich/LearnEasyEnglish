@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         
         Title="LoginWindow"
-        Height="550" 
-        Width="800"
+        Height="480" 
+        Width="430"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
@@ -19,7 +19,7 @@
     <Border CornerRadius="12">
         <Border.Background>
             <ImageBrush ImageSource="/Assets/Images/Login_png-1.jpg"
-                        Stretch="None"/>
+                        Stretch="Fill"/>
         </Border.Background>
         <Border CornerRadius="10"                    
             BorderThickness="2"
@@ -49,7 +49,7 @@
                         <ColumnDefinition Width="25"/>
                         <ColumnDefinition Width="5"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="LOG IN"
+                    <TextBlock Text="Sign in"
                                Foreground="DarkGray"
                                FontSize="10"
                                FontFamily="Montserrat"
@@ -117,33 +117,25 @@
                         </Button.Template>
                     </Button>
                 </Grid>
-                <StackPanel Width="220"
+                <StackPanel Width="240"
                             Grid.Row="1"
                             Orientation="Vertical"
                             Margin="0,35,0,0">
-                    <Image Source="/Assets/Images/Login_logo.jpg"
-                           Width="100" Height="90" />
-                    <TextBlock Text="EasyEnglish"
+                    
+                    <TextBlock Text="Sign in"
                                Foreground="White"
-                               FontSize="25"
+                               FontSize="40"
                                FontWeight="Medium"
                                FontFamily="Montserrat"
                                HorizontalAlignment="Center"/>
-                    <TextBlock Text="!!! Learn English easily with this app !!!"
-                               Foreground="LightGray"
-                               FontSize="12"
-                               FontWeight="Medium"
-                               FontFamily="Montserrat"
-                               TextWrapping="Wrap"
-                               TextAlignment="Center"
-                               Margin="0,5,0,0"/>
-                    <TextBlock Text="Username"
+                    
+                    <TextBlock Text="First name:"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Montserrat"                             
                                Margin="0,35,0,0"/>
-                    <TextBox x:Name="txtUser"
+                    <TextBox x:Name="tbName"
                              FontSize="13"
                              FontWeight="Medium"
                              FontFamily="Montserrat"                            
@@ -162,13 +154,13 @@
                                         AlignmentX="Left"/>
                         </TextBox.Background>
                     </TextBox>
-                    <TextBlock Text="Password"
+                    <TextBlock Text="Password:"
                                Foreground="DarkGray"
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Montserrat"                             
-                               Margin="0,15,0,0"/>
-                    <PasswordBox x:Name="txtPass"
+                               Margin="0,25,0,0"/>
+                    <PasswordBox x:Name="tbPassword"
                              FontSize="13"
                              FontWeight="Medium"
                              FontFamily="Montserrat"                            
@@ -190,7 +182,7 @@
                     </PasswordBox>
                     <Button x:Name="btnLogin"                          
                             BorderThickness="0"
-                            Content="LOG IN"
+                            Content="Sign in"
                             Foreground="White"
                             FontSize="12"
                             FontFamily="Montserrat"
@@ -233,6 +225,25 @@
                                FontFamily="Montserrat"
                                Cursor="Hand"
                                Margin="8,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="0,15,0,0">
+                        <TextBlock  
+                               Text="You have not registered before?"
+                               Foreground="DarkGray"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               FontFamily="Montserrat"/>
+                        <TextBlock Text="Sign up"
+                               Foreground="White"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               FontFamily="Montserrat"
+                               Cursor="Hand"
+                               Margin="8,0,0,0"
+                               MouseDown="Signup_MouseDown"/>
+                        
                     </StackPanel>
                 </StackPanel>
             </Grid>

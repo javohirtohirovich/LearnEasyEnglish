@@ -16,6 +16,7 @@ using System.Runtime.InteropServices; // Windowni tepaga yoki yonga suraganda wi
 using System.Windows.Interop; // Windowni tepaga yoki yonga suraganda windowni bir bo'lagini egalash uchun packge
 using LearnEasyEnglish.Pages;
 using LearnEasyEnglish.Utils;
+using LearnEasyEnglish.Windows.AddGroupWordWindow;
 
 namespace LearnEasyEnglish
 {
@@ -75,8 +76,8 @@ namespace LearnEasyEnglish
 
         private void rbAddWordsGroup_Click(object sender, RoutedEventArgs e)
         {
-           AddGroupWordsPage addGroupWordsPage = new AddGroupWordsPage();
-           PageNavigator.Content= addGroupWordsPage;
+           AddGroupWordsPage addGroupWordsPage = new AddGroupWordsPage(tbId.Text);
+           PageNavigator.Content= addGroupWordsPage;           
         }
 
         private void rbTranslate_Click(object sender, RoutedEventArgs e)
@@ -95,6 +96,16 @@ namespace LearnEasyEnglish
         {
             InfoPage infoPage= new InfoPage();
             PageNavigator.Content = infoPage;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void rbAddWordsGroup_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

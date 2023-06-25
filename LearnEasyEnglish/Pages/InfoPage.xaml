@@ -9,6 +9,21 @@
       Title="InfoPage">
 
     <Grid>
-        <Label FontSize="50">Info</Label>
+        <StackPanel Orientation="Vertical"
+                    >
+            <Label FontSize="50">Info</Label>
+            <TextBox Height="350"
+                Background="Transparent"
+                FontSize="30"
+                TextWrapping="Wrap"
+                AcceptsReturn="True"
+                Text="Bu dastur yordamida siz Ingiliz tilidagi so'zlarni tez va oson tarzda o'rganishengiz mumkin."                                    
+                
+                >
+                
+
+
+            </TextBox>
+        </StackPanel>
     </Grid>
 </Page>

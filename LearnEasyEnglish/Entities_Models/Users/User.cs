@@ -15,10 +15,6 @@ public sealed class User:Auditable
     public string Last_Name { get; set; } = String.Empty;
     [MaxLength(64)]
     public string Email { get; set; } = String.Empty;
-    [MaxLength(15)]
-    public string Phone_Number { get; set; } = String.Empty;
-    [MaxLength(50)]
-    public string Username { get; set; } = String.Empty;
     public string Password_hash { get; set; } = String.Empty;
     public string Salt { get; set; } = String.Empty;      
 }

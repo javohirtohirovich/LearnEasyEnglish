@@ -12,4 +12,8 @@ public sealed class Word_Group : Auditable
     [MaxLength(50)]
     public string Group_Name { get; set; } = String.Empty;
     public string Description { get; set;}= String.Empty;
+
+    public long User_id { get; set; }
+
+    public string ImagePath { get; set; }= String.Empty;
 }

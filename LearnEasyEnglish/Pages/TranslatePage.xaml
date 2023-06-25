@@ -33,24 +33,53 @@
                     </Border>
                 </StackPanel>
                 <Border Grid.Row="1">
-                    <RichTextBox FontSize="20" FontStretch="Condensed" FontStyle="Normal">
+                    <RichTextBox x:Name="rtbLanguage_1"
+                                 FontSize="20" 
+                                 FontStretch="Condensed" 
+                                 FontStyle="Normal"
+                                 Background="#9DB2BF">
                         
                     </RichTextBox>
                 </Border>
-                <StackPanel
-                    Orientation="Horizontal"
+                <Border
                     Grid.Row="2">
-                    <Border Width="100"
-                            Background="Wheat"
-                            VerticalAlignment="Center">
-                        <TextBlock Text="English" FontSize="21"
-                               VerticalAlignment="Stretch"
-                                   FontWeight="SemiBold">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="80"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Text="English"
+                                   Background="Wheat"
+                                   VerticalAlignment="Stretch"
+                                   FontSize="21"
+                                   FontWeight="SemiBold"
+                                   >
+                            
                         </TextBlock>
-                    </Border>
-                </StackPanel>
+                        <Button x:Name="btTranlate"
+                                Click="btTranlate_Click"
+                                Grid.Column="2"
+                                Background="Wheat"
+                                Content="Click"
+                                FontSize="19"
+                                FontWeight="SemiBold">
+                            
+                        </Button>
+                        
+                    </Grid>
+                   
+
+
+                </Border>
                 <Border Grid.Row="3">
-                    <RichTextBox FontSize="20" FontStretch="Condensed" FontStyle="Normal">
+                    <RichTextBox x:Name="rtbLanguage_2"
+                                 FontSize="20" 
+                                 FontStretch="Condensed" 
+                                 FontStyle="Normal"
+                                 Background="#9DB2BF"
+                                 Cursor="Arrow">
 
                     </RichTextBox>
                 </Border>
