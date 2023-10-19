@@ -44,6 +44,7 @@ namespace LearnEasyEnglish.Windows.AddWordMinWindow
 
         private async void btSaveWord_Click(object sender, RoutedEventArgs e)
         {
+
             Word word = new Word();
             word.Word_text = tbWord.Text;
             word.Sound_path = "asdasd";
@@ -53,26 +54,35 @@ namespace LearnEasyEnglish.Windows.AddWordMinWindow
             word.CreatedAt = TimeHelper.GetDateTime();
             word.UpdatedAt = TimeHelper.GetDateTime();
 
-            var result = await _wordRepository.CreateAsync(word);
-            if (result > 0)
+            if (tbWord.Text != "" && tbWordTranslate.Text != "" && tbDifination.Text != "")
             {
-                MessageBox.Show("Muvaffaqqiyatli guruh saqlandi");
-                this.Close();
+                var result = await _wordRepository.CreateAsync(word);
+                if (result > 0)
+                {
+                    MessageBox.Show("Muvaffaqqiyatli guruh saqlandi");
+                    this.Close();
+                }
+                else { MessageBox.Show("Saqlanmadi!"); }
             }
-            else { MessageBox.Show("Saqlanmadi!"); }
-
+            else
+            {
+                MessageBox.Show("You did not fill in all the lines", "Warning!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         private async void btGetTranslate_Click(object sender, RoutedEventArgs e)
         {
-            string from = cbSelectLang.SelectedValue.ToString().ToLower();
-            if (from == "en")
+            int from = cbSelectLang.SelectedIndex;
+            if (from==0)
             {
-                tbWordTranslate.Text = await GoogleTranslate.Translate(from,"uz",tbWord.Text.ToLower());
+                var res = await GoogleTranslate.GetTranslatedWordAsync("en", "uz", tbWord.Text.ToLower());
+                tbWordTranslate.Text = res.TranslatedWord;
             }
-            else if(from=="uz")
+            else if (from == 1)
             {
-                tbWordTranslate.Text = await GoogleTranslate.Translate(from, "en", tbWord.Text.ToLower());
+                var res = await GoogleTranslate.GetTranslatedWordAsync("uz", "en", tbWord.Text.ToLower());
+                tbWordTranslate.Text = res.TranslatedWord;
+
             }
         }
     }

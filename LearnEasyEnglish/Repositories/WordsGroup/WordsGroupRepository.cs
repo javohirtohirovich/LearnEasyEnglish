@@ -102,9 +102,42 @@ public class WordsGroupRepository : IWordsGroupRepository
         }
     }
 
-    public Task<IList<Word_Group>> GetAllAsync()
+    public async Task<IList<Word_Group>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        try
+        {
+            await _connection.OpenAsync();
+            var list = new List<Word_Group>();
+            string query = $"select * from words_groups order by id ";
+                
+            await using (var command = new NpgsqlCommand(query, _connection))
+            {
+                await using (var reader = await command.ExecuteReaderAsync())
+                {
+                    while (await reader.ReadAsync())
+                    {
+                        var word_Group = new Word_Group();
+                        word_Group.id = reader.GetInt64(0);
+                        word_Group.Group_Name = reader.GetString(1);
+                        word_Group.Description = reader.GetString(2);
+                        word_Group.CreatedAt = reader.GetDateTime(3);
+                        word_Group.UpdatedAt = reader.GetDateTime(4);
+                        word_Group.User_id = reader.GetInt64(5);
+                        word_Group.ImagePath = reader.GetString(6);
+                        list.Add(word_Group);
+                    }
+                }
+            }
+            return list;
+        }
+        catch
+        {
+            return new List<Word_Group>();
+        }
+        finally
+        {
+            await _connection.CloseAsync();
+        }
     }
 
     public Task<IList<Word_Group>> GetAlluserPasswordHashSaltAsync(string name)
@@ -116,6 +149,7 @@ public class WordsGroupRepository : IWordsGroupRepository
     {
         throw new NotImplementedException();
     }
+
 
     public Task<int> UpdateAsync(long id, Word_Group editedObj)
     {

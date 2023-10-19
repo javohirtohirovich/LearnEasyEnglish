@@ -1,0 +1,44 @@
+﻿<Window x:Class="LearnEasyEnglish.Windows.MemorizeWindow.MemorizeWIndow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LearnEasyEnglish.Windows.MemorizeWindow"
+        mc:Ignorable="d"
+        Title="MemorizeWIndow" Height="350" Width="700"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border
+            Background="{StaticResource panelOverColor}">
+            <TextBlock Text="Start memorizing words"
+                       FontSize="50"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Foreground="{StaticResource titleColor1}">
+                
+            </TextBlock>
+        </Border>
+        <StackPanel Grid.Row="1"
+                    Orientation="Vertical">
+            <Button x:Name="btStep1"
+                    Height="60"
+                    Width="200"
+                    Margin="30"
+                    Content="Test"
+                    FontSize="30"
+                    Click="btStep1_Click"
+                    Background="{StaticResource color5}">
+            </Button>
+
+           
+
+
+        </StackPanel>
+    </Grid>
+   
+</Window>

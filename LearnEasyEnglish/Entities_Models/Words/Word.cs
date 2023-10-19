@@ -13,5 +13,4 @@ public sealed class Word : Auditable
     public string DifinationText { get; set; }= String.Empty;
     public string GroupName { get; set; }=String.Empty;
     public string TranslatedText { get; set; }= String.Empty;
-    public object meanings { get; internal set; }
 }

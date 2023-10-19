@@ -56,10 +56,11 @@ namespace LearnEasyEnglish.Pages
                 
             }
         }
-        private void btnCreate_Click(object sender, RoutedEventArgs e)
+        private async void btnCreate_Click(object sender, RoutedEventArgs e)
          {
             AddGroupWordWindow addGroupWord =new AddGroupWordWindow(_uId);
             addGroupWord.ShowDialog();
+            await RefreshAsync();
         }
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)

@@ -1,5 +1,6 @@
 ﻿using LearnEasyEnglish.Constants;
 using LearnEasyEnglish.Entities_Models.Words;
+using LearnEasyEnglish.Entities_Models.Words_Groups;
 using LearnEasyEnglish.Interfaces.Words;
 using LearnEasyEnglish.Utils;
 using Npgsql;
@@ -55,19 +56,101 @@ public class WordsRepository : IWordRepositorie
         }
     }
 
-    public Task<int> DeleteAsync(long id)
+    public async Task<int> DeleteAsync(long id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            await _connection.OpenAsync();
+            string query = $"delete from words WHERE id = {id};";
+            var command = new NpgsqlCommand(query, _connection);
+            var result = await command.ExecuteNonQueryAsync();
+            if (result != 0) { return 1; }
+            else { return 0; }
+        }
+        catch
+        {
+
+            return 0;
+        }
+        finally { _connection.Close(); }
     }
 
-    public Task<IList<Word>> GetAllAsync(PagenationParams @params)
+    public async Task<IList<Word>> GetAllAsync(PagenationParams @params)
     {
-        throw new NotImplementedException();
+        try
+        {
+            await _connection.OpenAsync();
+            var list = new List<Word>();
+            string query = $"select * from words order by id"+
+                $"offset {(@params.PageNumber - 1) * @params.PageSize} " +
+                $"limit {@params.PageSize}";
+            await using (var command = new NpgsqlCommand(query, _connection))
+            {
+                await using (var reader = await command.ExecuteReaderAsync())
+                {
+                    while (await reader.ReadAsync())
+                    {
+                        var word = new Word();
+                        word.id = reader.GetInt64(0);
+                        word.Word_text = reader.GetString(1);
+                        word.Sound_path = reader.GetString(2);
+                        word.CreatedAt = reader.GetDateTime(3);
+                        word.UpdatedAt = reader.GetDateTime(4);
+                        word.DifinationText = reader.GetString(5);
+                        word.GroupName = reader.GetString(6);
+                        word.TranslatedText = reader.GetString(7);
+                        list.Add(word);
+                    }
+                }
+            }
+            return list;
+        }
+        catch
+        {
+            return new List<Word>();
+        }
+        finally
+        {
+            await _connection.CloseAsync();
+        }
     }
 
-    public Task<IList<Word>> GetAllAsync()
+    public async Task<IList<Word>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        try
+        {
+            await _connection.OpenAsync();
+            var list = new List<Word>();
+            string query = $"select * from Words order by id";
+            await using (var command = new NpgsqlCommand(query, _connection))
+            {
+                await using (var reader = await command.ExecuteReaderAsync())
+                {
+                    while (await reader.ReadAsync())
+                    {
+                        var word = new Word();
+                        word.id = reader.GetInt64(0);
+                        word.Word_text = reader.GetString(1);
+                        word.Sound_path = reader.GetString(2);
+                        word.CreatedAt = reader.GetDateTime(3);
+                        word.UpdatedAt = reader.GetDateTime(4);
+                        word.DifinationText = reader.GetString(5);
+                        word.GroupName = reader.GetString(6);
+                        word.TranslatedText = reader.GetString(7);
+                        list.Add(word);
+                    }
+                }
+            }
+            return list;
+        }
+        catch
+        {
+            return new List<Word>();
+        }
+        finally
+        {
+            await _connection.CloseAsync();
+        }
     }
 
     public Task<IList<Word>> GetAlluserPasswordHashSaltAsync(string name)
@@ -80,8 +163,29 @@ public class WordsRepository : IWordRepositorie
         throw new NotImplementedException();
     }
 
-    public Task<int> UpdateAsync(long id, Word editedObj)
+    public async Task<int> UpdateAsync(long id, Word editedObj)
     {
-        throw new NotImplementedException();
+        try
+        {
+            await _connection.OpenAsync();
+            string query = $"UPDATE words set word = @word,translated = @translated,difination=@difination where id = '{id}';";
+            await using (var command = new NpgsqlCommand(query, _connection))
+            {
+                command.Parameters.AddWithValue("@word", editedObj.Word_text);
+                command.Parameters.AddWithValue("@translated", editedObj.TranslatedText);
+                command.Parameters.AddWithValue("@difination", editedObj.DifinationText);
+                var dbresult = command.ExecuteNonQueryAsync();
+                return dbresult.Result;
+            }
+
+        }
+        catch
+        {
+            return 0;
+        }
+        finally
+        {
+            await _connection.CloseAsync();
+        }
     }
 }

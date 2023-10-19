@@ -173,6 +173,46 @@
         <Setter Property="Height" Value="16"/>
     </Style>
 
+    <!--Start: For Game Button-->
+    <Style x:Key="BtnGameTest" TargetType="{x:Type Button}" >
+        <Setter Property="Height" Value="40" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="Border"
+                            CornerRadius="5"
+                            Background="#C0C9EA"
+                            Height="{TemplateBinding Height}">
+
+                        <TextBlock FontSize="16"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontWeight="SemiBold"
+                                   Foreground="{StaticResource plainTextColor1}"
+                                   FontFamily="JetBrains Mono">
+                                <ContentPresenter />
+                        </TextBlock>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="#4B22C7"/>
+                        </Trigger>
+
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter TargetName="Border" Property="Background" Value="#2B1372"/>
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="#34178A"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--End: For Game Button-->
+
 
 
 </ResourceDictionary>

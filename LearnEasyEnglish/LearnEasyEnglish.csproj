@@ -8,10 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\Images\again_pass_logo.png" />
     <None Remove="Assets\Images\email_logo.png" />
+    <None Remove="Assets\Images\key_logo.png" />
     <None Remove="Assets\Images\Login_logo.jpg" />
     <None Remove="Assets\Images\Login_png-1.jpg" />
+    <None Remove="Assets\Images\password_logo.png" />
+    <None Remove="Assets\Images\reset_password_logo.png" />
+    <None Remove="Assets\Images\translate.png" />
+    <None Remove="Assets\Images\user_logo.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,23 +23,29 @@
     <Folder Include="Assets\Sounds\" />
     <Folder Include="Enums\" />
     <Folder Include="Themes\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="FontAwesome.Sharp" Version="6.3.0" />
     <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
-    <PackageReference Include="Google.Apis.Translate.v2" Version="1.60.0.875" />
+    <PackageReference Include="Google.Apis.Translate.v2" Version="1.61.0.875" />
     <PackageReference Include="Google.Cloud.Translate.V3" Version="3.2.0" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Npgsql" Version="7.0.4" />
+    <PackageReference Include="PagedList" Version="1.17.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\Images\again_pass_logo.png" />
     <Resource Include="Assets\Images\email_logo.png" />
+    <Resource Include="Assets\Images\key_logo.png" />
     <Resource Include="Assets\Images\Login_logo.jpg" />
     <Resource Include="Assets\Images\Login_png-1.jpg" />
+    <Resource Include="Assets\Images\password_logo.png" />
+    <Resource Include="Assets\Images\reset_password_logo.png" />
+    <Resource Include="Assets\Images\translate.png" />
+    <Resource Include="Assets\Images\user_logo.png" />
   </ItemGroup>
 
 </Project>

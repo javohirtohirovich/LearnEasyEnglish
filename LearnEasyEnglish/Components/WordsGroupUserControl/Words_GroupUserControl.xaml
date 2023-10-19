@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:LearnEasyEnglish.Components.WordsGroup"
              mc:Ignorable="d" 
              Height="260" Width="280"
-             Margin="10 10"
+             Margin="15 10"
              MouseDown="UserControl_MouseDown">
     <Grid x:Name="grMain" Cursor="Hand" MouseDown="grMain_MouseDown">
         <Grid.RowDefinitions>
@@ -22,29 +22,46 @@
                 Background="{StaticResource panelActiveColor}"
                 CornerRadius="0 0 10 10">
             <StackPanel Margin="10 5">
-                <Label x:Name="lbName"
-                       FontSize="16"
-                       FontFamily="Jetbrains Mono"
-                       FontWeight="SemiBold"
-                       Foreground="Black"/>
+                <Border>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
+                        <Label x:Name="lbName"
+                        Grid.Column="0"
+                        FontSize="16"
+                        FontFamily="Jetbrains Mono"
+                        FontWeight="SemiBold"
+                        Foreground="{StaticResource plainTextColor1}"/>
+
+                        <Button x:Name="btAddWord"
+                        Grid.Column="1"
+                        HorizontalAlignment="Right"
+                        Width="30"
+                        Height="30"
+                        Click="btAddWord_Click"
+                        Margin="0,-8,-5,0"
+                        Content="+"
+                        Foreground="White"
+                        FontSize="20"
+                        Background="{StaticResource color9}"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center">
+
+                        </Button>
+                    </Grid>
+                </Border>
                 <TextBlock x:Name="tbDescription"
                            FontFamily="Jetbrains Mono"
                            FontSize="14"
                            Height="60"
                            TextWrapping="Wrap"
-                           Foreground="Black">
+                           Foreground="{StaticResource titleColor3}">
                     
                 </TextBlock>
-                <Button x:Name="btAddWord"
-                        HorizontalAlignment="Right"
-                        Width="20"
-                        Height="20"
-                        Content="+"
-                        Click="btAddWord_Click"
-                        Margin="0,-20,-5,0">
-                    
-                </Button>
+                
             </StackPanel>
         </Border>
     </Grid>

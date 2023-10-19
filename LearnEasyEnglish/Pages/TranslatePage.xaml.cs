@@ -32,28 +32,49 @@ namespace LearnEasyEnglish.Pages
             InitializeComponent();
         }
 
-        private async void btTranlate_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string text = new TextRange(rtbLanguage_1.Document.ContentStart, rtbLanguage_1.Document.ContentEnd).Text;
-            string result=await GoogleTranslate.Translate("uz", "en", text);
-            if(result == "Erorr!")
+            var lang = tbFirst.Text;
+            tbFirst.Text = tbSecond.Text;
+            tbSecond.Text = lang;
+
+            var text = txFirst.Text;
+            txFirst.Text = txSecond.Text;
+            txSecond.Text = text;
+        }
+
+        private async void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (tbFirst.Text.Length > 0)
             {
-                MessageBox.Show("Connection Error!","Error!",MessageBoxButton.OK, MessageBoxImage.Error);
+                if (tbFirst.Text == "Uzbek")
+                {
+                    var res = await GoogleTranslate.GetTranslatedWordAsync("uz", "en", txFirst.Text.ToLower());
+                    if (res.isSuccessful == true)
+                    {
+                        txSecond.Text = res.TranslatedWord;
+                    }
+                    else
+                    {
+                        txSecond.Text = res.TranslatedWord;
+                    }
+                }
+                if (tbFirst.Text == "English")
+                {
+                    var res = await GoogleTranslate.GetTranslatedWordAsync("en", "uz", txFirst.Text.ToLower());
+                    if (res.isSuccessful == true)
+                    {
+                        txSecond.Text = res.TranslatedWord;
+                    }
+                    else
+                    {
+                        txSecond.Text = res.TranslatedWord;
+                    }
+                }
             }
             else
             {
-                string json = result;
-
-                TranslationResponse response = JsonConvert.DeserializeObject<TranslationResponse>(json);
-
-                if (response.data != null && response.data.translations.Length > 0)
-                {
-                    string translatedText = response.data.translations[0].translatedText;
-                    TextRange txt = new TextRange(rtbLanguage_2.Document.ContentStart, rtbLanguage_2.Document.ContentEnd);
-                    txt.Text = "";
-                    rtbLanguage_2.AppendText(translatedText);
-
-                }
+                tbSecond.Text = "";
             }
         }
     }

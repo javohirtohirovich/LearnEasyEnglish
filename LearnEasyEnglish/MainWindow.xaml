@@ -57,7 +57,7 @@
                                 Height="45"
                                 Margin="15,25,5,40">
                         <!--Image Source yordamida logoni chaqqirib oldim-->
-                        <Image Source="/Assets/Images/Login_logo.jpg" Height="30"/>
+                        
                         
                         <!--Logo yonidagi datur nomi uchun-->
                         <TextBlock Text="EasyEnglish"
@@ -74,15 +74,8 @@
 
                     <!--Dashboard Uchun RadioButton-->
                     <!--Radio Buttonlar Styleni yaratgan Stylemiz orqali beramiz. Styleni menuButton Key bilin chaqirib olamiz-->
-                    <RadioButton x:Name="rbDashboard"
-                                 Style="{StaticResource menuButton}"
-                                 Tag="{StaticResource color1}"
-                                 Click="rbDashboard_Click">
-                        <StackPanel Orientation="Horizontal">
-                            <fa:IconImage Icon="Home" Style="{StaticResource menuButtonIcon}"/>
-                            <TextBlock Text="Dashboard" Style="{StaticResource menuButtonText}"/>
-                        </StackPanel>
-                    </RadioButton>
+                    
+                    
                     
                     <!--Words Groups Qo'shish uchun RadioButton-->
                     <RadioButton x:Name="rbAddWordsGroup"
@@ -95,6 +88,18 @@
                         </StackPanel>
                     </RadioButton>
                     
+                    <!--Words Update Delete-->
+                    <RadioButton x:Name="rbUpdateDeleteWord"
+                                 Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color5}"
+                                 Click="rbUpdateDeleteWord_Click" Checked="rbUpdateDeleteWord_Checked">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Gear" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Setting Word" Style="{StaticResource menuButtonText}"/>
+                        </StackPanel>
+                    </RadioButton>
+
+
                     <!--Translate RadioButtonni-->
                     <RadioButton x:Name="rbTranslate"
                                  Style="{StaticResource menuButton}"
@@ -198,17 +203,28 @@
                     <!--Row 0 tugadi-->    
                     </StackPanel>
                     <!--Header / Caption-->
-                    <Grid Grid.Row="1">
+                    <Border Grid.Row="1"
+                            CornerRadius="20,20,20,20">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.7">
+                                <GradientStop Color="{StaticResource secondaryBackColor1}" Offset="0"/>
+                                <GradientStop Color="{StaticResource secondaryBackColor2}" Offset="1"/>
+
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Grid Grid.Row="1"
+                          >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                          
                         <!--Caption-->
+                        
                         <StackPanel Grid.Column="0"
                                     Orientation="Horizontal"
                                     VerticalAlignment="Center">
-                            <fa:IconImage Icon="Home"
+                            <fa:IconImage Icon="GraduationCap"
                                           Height="20"
                                           Width="20"
                                           Foreground="{StaticResource titleColor2}"
@@ -262,6 +278,7 @@
 
                         </StackPanel>
                     </Grid>
+                    </Border>
                     <Border
                         Grid.Row="2"
                         CornerRadius="0,0,10,0">

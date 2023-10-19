@@ -1,0 +1,155 @@
+﻿<Page x:Class="LearnEasyEnglish.Pages.WordsDeleteUpdatePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LearnEasyEnglish.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="700"
+      Title="WordsDeleteUpdatePage"
+      Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="120"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Choose pagenation count-->
+           
+
+            <!--Search TextBox-->
+
+
+           
+        </Grid>
+
+        <DataGrid Grid.Row="1"
+                  Name="dgData"
+                  FontSize="15"
+                  Foreground="#102341"
+                  FontFamily="Jetbrains Mono"
+                  AutoGenerateColumns="False"
+                  CanUserResizeColumns="False"
+                  CanUserResizeRows="False"
+                  IsReadOnly="True"
+                  CanUserReorderColumns="False"
+                  Background="#4B6479"
+                  TextElement.Foreground="#102341"
+                  Loaded="DataGrid_Loaded" SelectionChanged="dgData_SelectionChanged">
+            <DataGrid.Columns>
+                
+                <DataGridTextColumn Header="Id"
+                                    Width="70"
+                                    Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Word"
+                                    Width="4*"
+                                    Binding="{Binding Word}"/>
+                <DataGridTextColumn Header="Translate"
+                                    Width="5*"
+                                    Binding="{Binding Translate}"/>
+                <DataGridTextColumn Header="GroupName"
+                                    Width="100"
+                                    Binding="{Binding Groups_Name}"
+                                    />
+
+            
+
+                <!--Action-->
+                <DataGridTemplateColumn Header="Up/Del"
+                                        Width="105">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <ToolBarTray>
+                                    <ToolBar>
+                                    <Button x:Name="btnUpdate"
+                                            Width="35"
+                                            BorderThickness="0"                                      
+                                            ToolTip="Word update"
+                                            Click="btnUpdate"
+                                            Content="Up"
+                                            >
+                                    </Button>
+                                    <Button x:Name="btnDelete"
+                                            Margin="2 0 0 0"
+                                            Width="35"
+                                            BorderThickness="0"
+                                            ToolTip="Word delete"
+                                            Click="btnDelete"
+                                            Content="Del">
+                                       
+                                    </Button>
+                                    </ToolBar>
+                                </ToolBarTray>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="1"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <Button x:Name="btnLeft"
+                        Grid.Column="1"
+                        Tag="{DynamicResource right}"
+                        Content="&lt;"
+                        FontSize="18"
+                        FontFamily="Jetbrains Mono"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Top"
+                        Width="60"
+                        Background="{StaticResource panelActiveColor}" Click="btnLeft_Click">
+                </Button>
+
+                <Button x:Name="btnRight"
+                        Grid.Column="1"
+                        Tag="{DynamicResource right}"
+                        FontSize="18"
+                        Content=">"
+                        FontFamily="Jetbrains Mono"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Top"
+                        Width="60"
+                        Background="{StaticResource panelActiveColor}" Click="btnRight_Click">
+                </Button>
+
+                <ComboBox x:Name="pageSize" 
+                      IsReadOnly="True"
+                      Foreground="#102341"
+                      Grid.Column="0"
+                      Width="80"
+                      Height="35"
+                      VerticalContentAlignment="Center"
+                      HorizontalContentAlignment="Center"
+                      Background="#EDF4FF"
+                      FontFamily="Jetbrains Mono"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Top"
+                      SelectedIndex="0" SelectionChanged="pageSize_SelectionChanged"
+                      Margin="40,3">
+                    <ComboBoxItem Tag="10">10</ComboBoxItem>
+                    <ComboBoxItem Tag="20">20</ComboBoxItem>
+                    <ComboBoxItem Tag="30">30</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

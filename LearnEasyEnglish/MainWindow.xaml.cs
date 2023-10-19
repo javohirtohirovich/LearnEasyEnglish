@@ -30,6 +30,7 @@ namespace LearnEasyEnglish
             InitializeComponent();
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight; //
         }
+
         [DllImport("user32.dll")]
         public static extern IntPtr SendMessage(IntPtr hWnd,int wMsg,int wParam,int lParam);
 
@@ -70,11 +71,11 @@ namespace LearnEasyEnglish
 
         private void rbDashboard_Click(object sender, RoutedEventArgs e)
         {
-
+           
             
         }
 
-        private void rbAddWordsGroup_Click(object sender, RoutedEventArgs e)
+        private async void rbAddWordsGroup_Click(object sender, RoutedEventArgs e)
         {
            AddGroupWordsPage addGroupWordsPage = new AddGroupWordsPage(tbId.Text);
            PageNavigator.Content= addGroupWordsPage;           
@@ -104,6 +105,17 @@ namespace LearnEasyEnglish
         }
 
         private void rbAddWordsGroup_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void rbUpdateDeleteWord_Click(object sender, RoutedEventArgs e)
+        {
+            WordsDeleteUpdatePage wordsDeleteUpdatePage = new WordsDeleteUpdatePage();
+            PageNavigator.Content = wordsDeleteUpdatePage;
+        }
+
+        private void rbUpdateDeleteWord_Checked(object sender, RoutedEventArgs e)
         {
 
         }

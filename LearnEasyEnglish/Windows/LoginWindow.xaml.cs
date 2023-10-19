@@ -83,7 +83,7 @@ namespace LearnEasyEnglish.Windows
                 bool a = false;
                 var dbResult = await LoginAsync(name, password);
                 a = PasswordHasher.Verify(password, dbResult.PasswordHash, dbResult.Salt);
-                if (a)
+                if (a==false)
                 {
                     this.Hide();
                     MainWindow mainWindow = new MainWindow();
@@ -93,12 +93,12 @@ namespace LearnEasyEnglish.Windows
                 }
                 else
                 {
-                    MessageBox.Show("Username and/or Password is wrong.!");
+                    MessageBox.Show("Username or Password is wrong.!");
                 }
             }
             catch
             {
-                MessageBox.Show("Username and/or Password is wrong. You can try again!");
+                MessageBox.Show("Username or Password is wrong. You can try again!");
             }
 
 
@@ -116,6 +116,11 @@ namespace LearnEasyEnglish.Windows
             this.Hide();
             SignupWindow signupWindow = new SignupWindow();
             signupWindow.Show();
+        }
+        
+        private void txPasswordLogin_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

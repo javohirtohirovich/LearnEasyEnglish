@@ -184,7 +184,7 @@
                              VerticalContentAlignment="Center"
                              Margin="0,5,0,0"
                              Padding="30,0,0,0"
-                             MaxLength="25">
+                             MaxLength="30">
                         <TextBox.Background>
                             <ImageBrush ImageSource="/Assets/Images/user_logo.png"
                                         Stretch="Uniform"
@@ -269,7 +269,7 @@
                              MaxLength="15"
                              >
                         <PasswordBox.Background>
-                            <ImageBrush ImageSource="/Assets/Images/again_pass_logo.png"
+                            <ImageBrush ImageSource="/Assets/Images/reset_password_logo.png"
                                         Stretch="Uniform"
                                         AlignmentX="Left"/>
                         </PasswordBox.Background>

@@ -7,84 +7,139 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Translate">
+    <Border CornerRadius="20,20,20,20" BorderThickness="2" Background="#34178A">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row ="0"
+              Background="#34178A">
+            <Label FontSize="30"
+                   FontWeight="SemiBold"
+                   VerticalContentAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Foreground="{StaticResource color4}">
+                Translate
+            </Label>
 
-    <Border>
-        <Border
-            Margin="5,5,5,5"
-            Background="#696969"
-            CornerRadius="5,5,5,5">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <StackPanel
-                    Orientation="Horizontal"
-                    Grid.Row="0">
-                    <Border Width="100"
-                            Background="Wheat"
-                            VerticalAlignment="Center">
-                        <TextBlock Text="Uzbek" FontSize="21"
-                               VerticalAlignment="Stretch"
-                                   FontWeight="SemiBold">
-                        </TextBlock>
-                    </Border>
+        </Grid>
+
+        <Grid Grid.Row="1" Background="#EDF4FF"
+              VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0"
+                    Background="#23105E">
+                <StackPanel>
+                    <TextBlock x:Name="tbFirst"
+                               Foreground="{StaticResource color4}" 
+                               FontFamily="JetBrains Mono"
+                               FontSize="20"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Margin="0 8 0 0" 
+                               FontWeight="SemiBold"
+                               >
+                        English
+                    </TextBlock>
                 </StackPanel>
-                <Border Grid.Row="1">
-                    <RichTextBox x:Name="rtbLanguage_1"
-                                 FontSize="20" 
-                                 FontStretch="Condensed" 
-                                 FontStyle="Normal"
-                                 Background="#9DB2BF">
-                        
-                    </RichTextBox>
-                </Border>
-                <Border
-                    Grid.Row="2">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="80"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0"
-                                   Text="English"
-                                   Background="Wheat"
-                                   VerticalAlignment="Stretch"
-                                   FontSize="21"
-                                   FontWeight="SemiBold"
-                                   >
-                            
-                        </TextBlock>
-                        <Button x:Name="btTranlate"
-                                Click="btTranlate_Click"
-                                Grid.Column="2"
-                                Background="Wheat"
-                                Content="Click"
-                                FontSize="19"
-                                FontWeight="SemiBold">
-                            
-                        </Button>
-                        
-                    </Grid>
-                   
+            </Border>
 
+            <StackPanel Grid.Column="1">
+                <Button Height="45" 
+                        Background="{StaticResource color7}" 
+                        Click="Button_Click"
+                        Foreground="White"                        
+                        Width="45"
+                        Content=">"
+                        FontSize="30"
+                        VerticalContentAlignment="Center"
+                        FontWeight="SemiBold"
+                        >
+                </Button>
+            </StackPanel>
 
-                </Border>
-                <Border Grid.Row="3">
-                    <RichTextBox x:Name="rtbLanguage_2"
-                                 FontSize="20" 
-                                 FontStretch="Condensed" 
-                                 FontStyle="Normal"
-                                 Background="#9DB2BF"
-                                 Cursor="Arrow">
-
-                    </RichTextBox>
-                </Border>
-
-            </Grid>
-        </Border>
+            <Border Grid.Column="2"
+                    Background="#23105E">
+                <StackPanel Grid.Column="2">
+                    <TextBlock x:Name="tbSecond"
+                               Foreground="{StaticResource color4}" 
+                               FontFamily="JetBrains Mono"
+                               FontSize="20"
+                               FontWeight="SemiBold"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Margin="0 8 0 0" >
+                        Uzbek
+                    </TextBlock>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="2" Background="#C0C9EA">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0"
+                    CornerRadius="10,10,10,10"
+                    BorderThickness="2"
+                    >
+                <StackPanel>
+                    <TextBox x:Name="txFirst"
+                             Height="450"
+                             Background="#A5B4EA"
+                             Foreground="#102341"
+                             FontFamily="Jetbrains Mono"
+                             FontSize="16"
+                             VerticalContentAlignment="Top"
+                             TextChanged="TextBox_TextChanged"
+                             AcceptsReturn="True"
+                             TextWrapping="Wrap"
+                             Margin="5,5,5,5"
+                             
+                             />
+                    <TextBox Visibility="Collapsed"/>
+                    <TextBox Visibility="Collapsed"/>
+                    <TextBox Visibility="Collapsed"/>
+                    <TextBox Visibility="Collapsed"/>
+                    <TextBox Visibility="Collapsed"/>
+                    <TextBox Visibility="Collapsed"/>
+                    <TextBox Visibility="Collapsed"/>
+                    <TextBox Visibility="Collapsed"/>
+                </StackPanel>
+            </Border>
+            <Border Grid.Column="1"
+                    CornerRadius="10,10,10,10"
+                    BorderThickness="2">
+            <StackPanel>
+                <TextBox x:Name="txSecond"
+                         Height="450"
+                         Background="#A5B4EA"
+                         Foreground="#102341"
+                         FontFamily="Jetbrains Mono"
+                         FontSize="16"
+                         VerticalContentAlignment="Top"
+                         AcceptsReturn="True"
+                         TextWrapping="Wrap"
+                         Margin="5,5,5,5"/>
+                <TextBox Visibility="Collapsed"/>
+                <TextBox Visibility="Collapsed"/>
+                <TextBox Visibility="Collapsed"/>
+                <TextBox Visibility="Collapsed"/>
+                <TextBox Visibility="Collapsed"/>
+                <TextBox Visibility="Collapsed"/>
+                <TextBox Visibility="Collapsed"/>
+                <TextBox Visibility="Collapsed"/>
+            </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
     </Border>
 </Page>

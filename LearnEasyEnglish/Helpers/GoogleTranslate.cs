@@ -6,38 +6,52 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Documents;
 using System.Windows;
+using LearnEasyEnglish.Pages;
+using Newtonsoft.Json;
+using System.Net.Http.Headers;
+using LearnEasyEnglish.Repositories.TranslateAPIModels;
 
 namespace LearnEasyEnglish.Helpers;
 public static class GoogleTranslate
 {
-    public static async Task<string> Translate(string from,string to,string text)
-    {
+    public  static async Task<(bool isSuccessful, string TranslatedWord)> GetTranslatedWordAsync(string from, string to, string word)
+    {      
         try
         {
+            string str1 = "[{\"Text\":" + "\"" + word + "\"}]";
             var client = new HttpClient();
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Post,
-                RequestUri = new Uri("https://google-translate1.p.rapidapi.com/language/translate/v2"),
-                Headers ={
-                            { "X-RapidAPI-Key", "bb8c5562famsh340822a348d3276p121254jsn419847bc0b1f" },
-                            {"X-RapidAPI-Host", "google-translate1.p.rapidapi.com" },
-                          },
-                Content = new FormUrlEncodedContent(new Dictionary<string, string>
+                RequestUri = new Uri($"https://microsoft-translator-text.p.rapidapi.com/translate?to%5B0%5D={to}&api-version=3.0&from={from}&profanityAction=NoAction&textType=plain"),
+                Headers =
+                    {
+                        { "X-RapidAPI-Key", "c841369174mshd86c036960342b2p120b2fjsn7ed9906f461e"},
+                        { "X-RapidAPI-Host", "microsoft-translator-text.p.rapidapi.com" },
+                    },
+                Content = new StringContent(str1)
                 {
-                    { "q", text },
-                    { "target", to },
-                    { "source", from },
-                }),
+                    Headers =
+                        {
+                            ContentType = new MediaTypeHeaderValue("application/json")
+                        }
+                }
             };
-            using (var response = await client.SendAsync(request))
-            {
-                response.EnsureSuccessStatusCode();
-                var body = await response.Content.ReadAsStringAsync();
-                return body;
-            }
+            var response = await client.SendAsync(request);
+            if ((int)response.StatusCode > 400) { }
+            response.EnsureSuccessStatusCode();
+            var body = await response.Content.ReadAsStringAsync();
+            var json = JsonConvert.DeserializeObject<List<Translater>>(body);
+            var tranlatedWord = json[0].Translations[0].Text;
+            if (tranlatedWord != null) return (true, tranlatedWord);
+            else return (false, "No translation found for this word");
+
         }
-        catch { return "Erorr!"; }
+        catch (Exception)
+        {
+            return (false, "No Internet");
+        }
     }
+
 }
 

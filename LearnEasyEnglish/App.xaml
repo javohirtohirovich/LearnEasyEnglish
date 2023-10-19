@@ -9,6 +9,7 @@
                 <ResourceDictionary Source="/Styles/UIColor.xaml"/>
                 <ResourceDictionary Source="/Styles/ButtonStyles.xaml"/>
                 <ResourceDictionary Source="/Assets/Icons/Icons.xaml"/>
+                <ResourceDictionary Source="/Styles/TextBoxStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
         
